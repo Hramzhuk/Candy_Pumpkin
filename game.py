@@ -24,6 +24,8 @@ x = 0
 y = 330
 speed = 5
 health = 10
+isJump = False
+jumpCount = 10
 
 f = pygame.font.SysFont("arial", 24)
 sc_text = f.render("Health: " + str(health), 1, WHITE)
@@ -42,14 +44,27 @@ while 1:
 
     if keys[pygame.K_LEFT] and game_over == False:
         x -= speed
+		
     if keys[pygame.K_RIGHT] and game_over == False:
         x += speed
-    # if keys[pygame.K_UP]:
-    #     y -= speed
-    #     pygame.display.update()
-    #     pygame.time.delay(600)
-    #     y += speed
-    #     pygame.display.update()
+		
+	if not (isJump):
+	# if keys[pygame.K_UP] and y > vel:
+	#     y -= vel
+	#
+	# if keys[pygame.K_DOWN] and y < 500 - height - vel:
+	#     y += vel
+
+		if keys[pygame.K_SPACE]:
+			isJump = True
+    else:
+        if jumpCount >= -10:
+            y -= (jumpCount * abs(jumpCount)) * 0.5
+            jumpCount -= 1
+        else:
+            jumpCount = 10
+            isJump = False
+			
     if player.x == 200:
         health -= obstacles["thorns"]
 
