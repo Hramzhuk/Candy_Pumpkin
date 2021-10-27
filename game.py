@@ -20,8 +20,8 @@ GREY = (165, 165, 165)
 FPS = 60
 clock = pygame.time.Clock()
 
-x = 0
-y = 330
+x = 10
+y = 311
 speed = 5
 health = 10
 isJump = False
@@ -48,15 +48,15 @@ while 1:
     if keys[pygame.K_RIGHT] and game_over == False:
         x += speed
 		
-	if not (isJump):
-	# if keys[pygame.K_UP] and y > vel:
-	#     y -= vel
-	#
-	# if keys[pygame.K_DOWN] and y < 500 - height - vel:
-	#     y += vel
+    if not (isJump):
+        # if keys[pygame.K_UP] and y > vel:
+        #     y -= vel
+        #
+        # if keys[pygame.K_DOWN] and y < 500 - height - vel:
+        #     y += vel
 
-		if keys[pygame.K_SPACE]:
-			isJump = True
+        if keys[pygame.K_SPACE]:
+            isJump = True
     else:
         if jumpCount >= -10:
             y -= (jumpCount * abs(jumpCount)) * 0.5
@@ -72,7 +72,7 @@ while 1:
         sc.fill(BLUE)
         pygame.draw.rect(sc, GREEN, (0, 350, 600, 50))
         pygame.draw.circle(sc, WHITE_ORANGE, (550, 50), 30)
-        player = pygame.draw.rect(sc, ORANGE, (x, y, 10, 20))
+        player = pygame.draw.rect(sc, ORANGE, (x, y, 39, 39))
         thorns = pygame.draw.rect(sc, GREY, (200, 350, 100, 5))
         f = pygame.font.SysFont("arial", 24)
         sc_text = f.render("Health: " + str(health), 1, WHITE)
